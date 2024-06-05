@@ -1,85 +1,211 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue';
+
+const formula = ref('');
+const inputBox = ref('');
+
+// evaluate input formula
+function evaluate() {
+  try {
+    const result = eval(formula.value);
+    inputBox.value = result;
+    formula.value = result.toString();
+  } catch (exception) {
+    console.log("Invalid formula", exception);
+    inputBox.value = 'ERR';
+  }
+}
+
+// add number to formula
+function add(value) {
+  formula.value = formula.value + value;
+
+  const last = formula.value.match(/(\d+(\.\d+)?)(?!.*\d)/)[0];
+  inputBox.value = last;
+
+  console.log(formula);
+}
+
+// backspace
+function backspace() {
+  if (inputBox.value === 'ERR') {
+    inputBox.value = '';
+  } else {
+    let str = inputBox.value.toString();
+    inputBox.value = str.slice(0, -1);
+  }
+  let str2 = formula.value.toString();
+  formula.value = str2.slice(0, -1);
+}
+
+// clear all numbers
+function clear() {
+  inputBox.value = '';
+  formula.value = '';
+}
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <b-container style="background-color: #FFFFFF; overflow: hidden">
+    <b-row style="height: 8rem;"></b-row>
+    <b-row class="mb-1">
+      <b-col cols="12">
+      <b-form-input type="text" v-model="formula" class="s-text"
+      style="border: none; text-align: end; background-color: #FFFFFF;" readonly>
+      {{ formula }}</b-form-input>
+    </b-col>
+    </b-row>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <b-row class="mt-1 mb-3 mx-0">
+      <b-col cols="12">
+      <b-form-input type="text" v-model="inputBox"
+      style="border: none; text-align: end; font-size: 5em; background-color: #FFFFFF;" readonly>
+      {{ inputBox }}</b-form-input>
+    </b-col>
+    </b-row>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
+    <b-row class="m-2" style="padding: 0 0.5px">
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button-clear" @click="clear">AC</b-button>
+      </b-col>
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button-clear" @click="backspace">
+        C</b-button>
+      </b-col>
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button-per" @click="add('*0.01')">%</b-button>
+      </b-col>
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button-oper" @click="add('/')">÷</b-button>
+      </b-col>
+    </b-row>
 
-  <RouterView />
+    <b-row class="m-2" style="padding: 0 0.5px;">
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button" @click="add(7)">7</b-button>
+      </b-col>
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button" @click="add(8)">8</b-button>
+      </b-col>
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button" @click="add(9)">9</b-button>
+      </b-col>
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button-oper" @click="add('*')">×</b-button>
+      </b-col>
+    </b-row>
+
+    <b-row class="m-2" style="padding: 0 0.5px;">
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button" @click="add(4)">4</b-button>
+      </b-col>
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button" @click="add(5)">5</b-button>
+      </b-col>
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button" @click="add(6)">6</b-button>
+      </b-col>
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button-oper" @click="add('-')">-</b-button>
+      </b-col>
+    </b-row>
+
+    <b-row class="m-2" style="padding: 0 0.5px;">
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button" @click="add(1)">1</b-button>
+      </b-col>
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button" @click="add(2)">2</b-button>
+      </b-col>
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button" @click="add(3)">3</b-button>
+      </b-col>
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button-oper" @click="add('+')">+</b-button>
+      </b-col>
+    </b-row>
+
+    <b-row class="m-2" style="padding: 0 0.5px;">
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button" @click="add(0)">0</b-button>
+      </b-col>
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button" @click="add('00')">00</b-button>
+      </b-col>
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button" @click="add('.')">.</b-button>
+      </b-col>
+      <b-col cols="3" style="padding: 0 2px">
+        <b-button class="w-100 button-oper" @click="evaluate">=</b-button>
+      </b-col>
+    </b-row>
+    <b-row style="height: 1rem;"></b-row>
+  </b-container>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.s-text {
+  font-size: 1.5em;
+  color: #808080;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.button {
+  background-color: #FFFFFF;
+  color: black;
+  border: none;
+  border-radius: 15%;
+  width: 40vw;
+  aspect-ratio: 1;
+  font-weight: bold;
+  font-size: 2rem;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+.button:hover {
+  background-color: #CCCCCC;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.button-oper {
+  background-color: #3333FF;
+  color: white;
+  border: none;
+  border-radius: 15%;
+  width: 40vw;
+  aspect-ratio: 1;
+  font-weight: bold;
+  font-size: 2rem;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.button-oper:hover {
+  background-color: #99CCFF;
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+.button-clear {
+  background-color: #999999;
+  color: white;
+  border: none;
+  border-radius: 15%;
+  width: 40vw;
+  aspect-ratio: 1;
+  font-weight: bold;
+  font-size: 2rem;
 }
 
-nav a:first-of-type {
-  border: 0;
+.button-clear:hover {
+  background-color: #CCCCCC;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+.button-per {
+  background-color: #CCCCCC;
+  color: white;
+  border: none;
+  border-radius: 15%;
+  width: 40vw;
+  aspect-ratio: 1;
+  font-weight: bold;
+  font-size: 2rem;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.button-per:hover {
+  background-color: #999999;
 }
 </style>
