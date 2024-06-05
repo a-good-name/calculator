@@ -1,3 +1,71 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M8.00251 14.9297L0 1.07422H6.14651L8.00251 4.27503L9.84583 1.07422H16L8.00251 14.9297Z" fill="black"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 192 192">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        font-size: 39.76px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        font-family: Arial-BoldMT, Arial;
+        font-weight: 700;
+      }
+
+      .cls-1, .cls-4 {
+        fill: #33f;
+      }
+
+      .cls-5 {
+        fill: #000;
+      }
+
+      .cls-5, .cls-4, .cls-6 {
+        stroke-width: 0px;
+      }
+
+      .cls-2, .cls-3, .cls-6 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        font-size: 39.76px;
+      }
+
+      .cls-7 {
+        display: none;
+      }
+    </style>
+  </defs>
+  <g id="Layer_3" data-name="Layer 3">
+    <rect class="cls-6" width="192" height="192"/>
+  </g>
+  <g id="Layer_2" data-name="Layer 2">
+    <rect class="cls-5" x="26.91" y="27.06" width="138.19" height="137.88" rx="16.28" ry="16.28"/>
+  </g>
+  <g id="Layer_1" data-name="Layer 1" class="cls-7">
+    <g>
+      <rect class="cls-6" x="26.81" y="26.81" width="66.21" height="66.21" rx="15.37" ry="15.37"/>
+      <text class="cls-1" transform="translate(48.31 74.78)"><tspan x="0" y="0">+</tspan></text>
+      <rect class="cls-4" x="98.98" y="26.97" width="66.21" height="66.21" rx="15.37" ry="15.37"/>
+      <text class="cls-2" transform="translate(124.58 71.41)"><tspan x="0" y="0">-</tspan></text>
+      <rect class="cls-4" x="26.81" y="98.98" width="66.21" height="66.21" rx="15.37" ry="15.37" transform="translate(192 72.17) rotate(90)"/>
+      <rect class="cls-6" x="98.98" y="98.98" width="66.21" height="66.21" rx="15.37" ry="15.37"/>
+      <text class="cls-3" transform="translate(61.9 150) rotate(-45)"><tspan x="0" y="0">+</tspan></text>
+      <text class="cls-1" transform="translate(120.58 146.36)"><tspan x="0" y="0">=</tspan></text>
+    </g>
+    <g>
+      <rect class="cls-5" x="227" y="14.73" width="138.19" height="137.88" rx="16.28" ry="16.28"/>
+      <rect class="cls-6" x="200.19" y="-12.08" width="192" height="192"/>
+      <g>
+        <rect class="cls-6" x="227" y="14.73" width="66.21" height="66.21" rx="15.37" ry="15.37"/>
+        <text class="cls-1" transform="translate(248.5 62.7)"><tspan x="0" y="0">+</tspan></text>
+        <rect class="cls-4" x="299.17" y="14.88" width="66.21" height="66.21" rx="15.37" ry="15.37"/>
+        <text class="cls-2" transform="translate(324.77 59.32)"><tspan x="0" y="0">-</tspan></text>
+        <rect class="cls-4" x="227" y="86.9" width="66.21" height="66.21" rx="15.37" ry="15.37" transform="translate(380.11 -140.11) rotate(90)"/>
+        <rect class="cls-6" x="299.17" y="86.9" width="66.21" height="66.21" rx="15.37" ry="15.37"/>
+        <text class="cls-3" transform="translate(262.09 137.92) rotate(-45)"><tspan x="0" y="0">+</tspan></text>
+        <text class="cls-1" transform="translate(320.78 134.28)"><tspan x="0" y="0">=</tspan></text>
+      </g>
+    </g>
+  </g>
 </svg>
